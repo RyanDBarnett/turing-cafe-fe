@@ -43,9 +43,19 @@ class App extends Component {
     })
   }
 
+  cancelReservation = (id) => {
+    const url = `http://localhost:3001/api/v1/reservations/${id}`
+    const options = {
+      method: 'DELETE'
+    }
+    fetch(url, options)
+    .then(response => response.json())
+    .then(reservations => this.setState({ reservations }));
+  }
+
   render() {
     const reservations = this.state.reservations.map(reservation => {
-      return <ReservationCard {...reservation} key={reservation.id} />
+      return <ReservationCard cancelReservation={this.cancelReservation} {...reservation} key={reservation.id} />
     });
     return (
       <div className="App">
