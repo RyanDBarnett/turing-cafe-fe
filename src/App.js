@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReservationForm from './ReservationForm';
 import ReservationCard from './ReservationCard';
 import './App.css';
 
@@ -32,9 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <div className='resy-form'>
-
-        </div>
+        <ReservationForm />
         <div className='resy-container'>
           {reservations}
         </div>

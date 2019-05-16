@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './ReservationForm.css';
+// import './ReservationForm.css';
 
 class ReservationForm extends Component {
   constructor() {
@@ -10,6 +10,15 @@ class ReservationForm extends Component {
       time: '',
       number: 0
     }
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+  }
+
+  handleChange = (e) => {
+    const {name, value} = e.target
+    this.setState({[name]: value});
   }
 
   render() {
