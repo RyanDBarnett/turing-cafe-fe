@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ReservationForm from './ReservationForm';
 import ReservationCard from './ReservationCard';
 import './App.css';
+import fetchReservations from './api/fetchReservations';
+import postReservation from './api/postReservation';
+import deleteReservation from './api/deleteReservation';
 
 class App extends Component {
   constructor() {
@@ -11,46 +14,20 @@ class App extends Component {
     }
   }
 
-  componentDidMount = () => {
-    this.fetchReservations();
+  componentDidMount = async () => {
+    const reservations = await fetchReservations();
+    this.setState({ reservations });
   }
 
-  fetchReservations = () => {
-    const url = 'http://localhost:3001/api/v1/reservations';
-    fetch(url)
-    .then(response => {
-      return response.json();
-    })
-    .then(reservations => {
-      this.setState({ reservations })
-    })
+  makeReservation = async (reservation) => {
+    reservation = await postReservation(reservation);
+    const reservations = [...this.state.reservations, reservation];
+    this.setState({ reservations });
   }
 
-  makeReservation = (reservation) => {
-    const url = 'http://localhost:3001/api/v1/reservations';
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(reservation)
-    } 
-    fetch(url, options)
-    .then(response => response.json())
-    .then(reservation => {
-      const reservations = [...this.state.reservations, reservation]
-      this.setState({ reservations });
-    })
-  }
-
-  cancelReservation = (id) => {
-    const url = `http://localhost:3001/api/v1/reservations/${id}`
-    const options = {
-      method: 'DELETE'
-    }
-    fetch(url, options)
-    .then(response => response.json())
-    .then(reservations => this.setState({ reservations }));
+  cancelReservation = async (id) => {
+    const reservations = await deleteReservation(id);
+    this.setState({ reservations });
   }
 
   render() {

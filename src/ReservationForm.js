@@ -8,13 +8,19 @@ class ReservationForm extends Component {
       name: '',
       date: '',
       time: '',
-      number: 0
+      number: ''
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.makeReservation(this.state);
+    this.setState({
+      name: '',
+      date: '',
+      time: '',
+      number: ''
+    })
   }
 
   handleChange = (e) => {
