@@ -1,7 +1,13 @@
-.Card {
+.ReservationCard {
   background-color: white;
+  color: teal;
   border: 2px solid teal;
   border-radius: 3px;
   width: 15%;
   margin: 2%;
+}
+
+.ReservationCard .button {
+  width: 80%;
+  margin-bottom: 20px;
 }

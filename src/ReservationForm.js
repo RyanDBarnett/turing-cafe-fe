@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './ReservationForm.css';
+import './ReservationForm.css';
 
 class ReservationForm extends Component {
   constructor() {
@@ -25,12 +25,12 @@ class ReservationForm extends Component {
   render() {
     const {name, date, time, number} = this.state;
     return (
-      <form onSubmit={this.handleSubmit} className="ReservationForm">
-        <input onChange={this.handleChange} type='text' name='name' placeholder='Name' value={name} />
-        <input onChange={this.handleChange} type='text' name='date' placeholder='Date (mm/dd)' value={date} />
-        <input onChange={this.handleChange} type='text' name='time' placeholder='Time' value={time} />
-        <input onChange={this.handleChange} type='number' name='number' placeholder='Number of guests' value={number}/>
-        <input type='submit' vale='Make Reservation'/>
+      <form className='ReservationForm' onSubmit={this.handleSubmit}>
+        <input className='input' onChange={this.handleChange} type='text' name='name' placeholder='Name' value={name} />
+        <input className='input' onChange={this.handleChange} type='text' name='date' placeholder='Date (mm/dd)' value={date} />
+        <input className='input' onChange={this.handleChange} type='text' name='time' placeholder='Time' value={time} />
+        <input className='input' onChange={this.handleChange} type='number' name='number' placeholder='Number of guests' value={number}/>
+        <input className='button' type='submit' value='Make Reservation'/>
       </form>
     )
   }

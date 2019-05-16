@@ -1,0 +1,9 @@
+.ReservationForm * {
+  margin: 0 25px;
+}
+
+.input {
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+}
