@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReservationCard from './ReservationCard';
 import './App.css';
 
 class App extends Component {
@@ -25,6 +26,9 @@ class App extends Component {
   }
 
   render() {
+    const reservations = this.state.reservations.map(reservation => {
+      return <ReservationCard {...reservation} />
+    });
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
@@ -32,7 +36,7 @@ class App extends Component {
 
         </div>
         <div className='resy-container'>
-          
+          {reservations}
         </div>
       </div>
     )
