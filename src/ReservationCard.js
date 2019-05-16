@@ -4,7 +4,7 @@ import './ReservationCard.css'
 class ReservationCard extends Component {
 
   render() {
-    const {date, id, name, number, time} = this.props
+    const {date, name, number, time} = this.props
     return (
       <article className="Card">
         <h2>{name}</h2>

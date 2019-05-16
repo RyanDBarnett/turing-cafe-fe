@@ -16,7 +16,7 @@ class App extends Component {
   }
 
   fetchReservations = () => {
-    const url = 'http://localhost:3001/api/v1/reservations'
+    const url = 'http://localhost:3001/api/v1/reservations';
     fetch(url)
     .then(response => {
       return response.json();
@@ -26,14 +26,31 @@ class App extends Component {
     })
   }
 
+  makeReservation = (reservation) => {
+    const url = 'http://localhost:3001/api/v1/reservations';
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(reservation)
+    } 
+    fetch(url, options)
+    .then(response => response.json())
+    .then(reservation => {
+      const reservations = [...this.state.reservations, reservation]
+      this.setState({ reservations });
+    })
+  }
+
   render() {
     const reservations = this.state.reservations.map(reservation => {
-      return <ReservationCard {...reservation} />
+      return <ReservationCard {...reservation} key={reservation.id} />
     });
     return (
       <div className="App">
         <h1 className='app-title'>Turing Cafe Reservations</h1>
-        <ReservationForm />
+        <ReservationForm makeReservation={this.makeReservation} />
         <div className='resy-container'>
           {reservations}
         </div>

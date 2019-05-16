@@ -14,6 +14,7 @@ class ReservationForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.makeReservation(this.state);
   }
 
   handleChange = (e) => {
@@ -28,7 +29,7 @@ class ReservationForm extends Component {
         <input onChange={this.handleChange} type='text' name='name' placeholder='Name' value={name} />
         <input onChange={this.handleChange} type='text' name='date' placeholder='Date (mm/dd)' value={date} />
         <input onChange={this.handleChange} type='text' name='time' placeholder='Time' value={time} />
-        <input onChange={this.handleChange} type='text' name='number' placeholder='Number of guests' value={number}/>
+        <input onChange={this.handleChange} type='number' name='number' placeholder='Number of guests' value={number}/>
         <input type='submit' vale='Make Reservation'/>
       </form>
     )
